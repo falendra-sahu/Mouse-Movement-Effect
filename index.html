@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Movement Effect</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #282c34;
+        }
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            transition: all 0.2s ease;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    document.body.addEventListener('mousemove', function(e) {
+        const circle = document.createElement('div');
+        circle.className = 'circle';
+        circle.style.width = '30px';
+        circle.style.height = '30px';
+        circle.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        circle.style.left = `${e.pageX}px`;
+        circle.style.top = `${e.pageY}px`;
+
+        document.body.appendChild(circle);
+        
+        setTimeout(() => {
+            circle.style.transform = `scale(3)`;
+            circle.style.opacity = '0';
+        }, 10);
+        
+        setTimeout(() => {
+            circle.remove();
+        }, 1000);
+    });
+</script>
+
+</body>
+</html>
